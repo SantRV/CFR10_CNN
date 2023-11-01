@@ -18,6 +18,7 @@ class CNNModelV2():
     class_names = []
 
     def __init__(self, num_classes: int, name: str, model_path: str, results_path: str, class_names: list, optimiser: str = "adam") -> None:
+
         # Validate data
         if optimiser not in self.optimisers:
             raise ValueError(f"INVALID OPTIMISER {optimiser}")
@@ -40,8 +41,6 @@ class CNNModelV2():
         model.add(layers.Dropout(0.5))
 
         model.add(layers.Conv2D(128, (3, 3), padding='same', activation='relu'))
-        model.add(layers.BatchNormalization())
-        model.add(layers.Conv2D(256, (3, 3), padding='same', activation='relu'))
         model.add(layers.BatchNormalization())
         model.add(layers.Conv2D(128, (3, 3), padding='same', activation='relu'))
         model.add(layers.BatchNormalization())
